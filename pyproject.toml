@@ -44,7 +44,7 @@ ai = [
 ]
 
 [project.scripts]
-chebarkul-grant = "chebarkul_grant.cli.main:app"
+chebarkul-grant = "chebarkul_grant.cli.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

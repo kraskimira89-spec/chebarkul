@@ -1,5 +1,5 @@
 site_name: "Чебаркуль: грантовый проект"
-site_description: Документация и материалы грантового проекта
+site_description: "Документация и материалы грантового проекта"
 theme:
   name: material
   language: ru

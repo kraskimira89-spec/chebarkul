@@ -27,7 +27,8 @@ ruff check .
 ## Документация в браузере
 
 ```powershell
-python scripts/build_mkdocs_grant_pages.py
+python -m chebarkul_grant build-docs
+python -m chebarkul_grant version
 mkdocs serve
 ```
 

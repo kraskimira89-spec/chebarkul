@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from urllib.parse import quote
 
 import mammoth
 
@@ -13,13 +14,13 @@ PDF_NAME = "89-26-1-000205 Договор о предоставлении гра
 DOCX_TZ = "TZ.docx"
 
 
-def _rel(path: str) -> str:
-    """Путь от страницы grant/dogovor/ или grant/tz/ к файлу в grant/."""
-    return f"../{path}"
+def _grant_href(filename: str) -> str:
+    """URL от корня сайта MkDocs (работает из любой вложенной страницы)."""
+    return f"/grant/{quote(filename)}"
 
 
 def build_dogovor_page() -> None:
-    pdf_href = _rel(PDF_NAME)
+    pdf_href = _grant_href(PDF_NAME)
     content = f"""# Договор о предоставлении гранта
 
 [Скачать PDF]({pdf_href})
@@ -41,7 +42,7 @@ def build_tz_page() -> None:
     with docx_path.open("rb") as docx_file:
         result = mammoth.convert_to_html(docx_file)
 
-    docx_href = _rel(DOCX_TZ)
+    docx_href = _grant_href(DOCX_TZ)
     warnings = "\n".join(f"- {msg}" for msg in result.messages)
     warn_block = f'\n\n!!! warning "Замечания при конвертации"\n\n{warnings}\n' if warnings else ""
 

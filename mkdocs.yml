@@ -1,5 +1,8 @@
-site_name: "Чебаркуль: грантовый проект"
+site_name: Chebarkul Grant Project
 site_description: "Документация и материалы грантового проекта"
+validation:
+  links:
+    unrecognized_links: ignore
 theme:
   name: material
   language: ru

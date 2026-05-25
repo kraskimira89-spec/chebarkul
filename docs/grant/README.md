@@ -9,4 +9,6 @@
 
 Перед `mkdocs serve` обновите страницы: `python scripts/build_mkdocs_grant_pages.py`.
 
+Презентация для экспертов: [слайды](../presentations/grant-presentation.md).
+
 Аудиозаписи: `assets/audio/`.

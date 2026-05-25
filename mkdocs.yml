@@ -1,0 +1,9 @@
+site_name: Чебаркуль: грантовый проект
+site_description: Документация и материалы грантового проекта
+theme:
+  name: material
+  language: ru
+nav:
+  - Главная: README.md
+  - Материалы гранта: grant/README.md
+  - Презентация: presentations/grant-presentation.md

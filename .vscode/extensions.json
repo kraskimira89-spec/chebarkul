@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-python.mypy-type-checker",
+    "tamasfe.even-better-toml",
+    "bungcip.better-toml",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-mermaid",
+    "marp-team.marp-vscode",
+    "ms-toolsai.jupyter"
+  ]
+}

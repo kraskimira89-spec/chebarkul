@@ -6,7 +6,9 @@
 
 ## Экспорт в PDF и PPTX
 
-Установите [Marp CLI](https://github.com/marp-team/marp-cli):
+**Рекомендуется:** общая команда для всех документов — см. [export-guide.md](../export-guide.md) (`python -m chebarkul_grant export-docs`).
+
+Вручную — установите [Marp CLI](https://github.com/marp-team/marp-cli):
 
 ```powershell
 npm install -g @marp-team/marp-cli

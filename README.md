@@ -47,6 +47,16 @@ mkdocs serve
 .\scripts\serve-docs.ps1
 ```
 
+## Экспорт в Word / PDF (выборочно)
+
+Нужны [Pandoc](https://pandoc.org/) и опционально [Marp CLI](https://github.com/marp-team/marp-cli):
+
+```powershell
+python -m chebarkul_grant export-docs
+```
+
+Результат в папке `exports/`. Подробно: `docs/export-guide.md`.
+
 Откройте разделы **Договор (PDF)**, **Техническое задание**, **Структура проекта** и **Презентация** в меню сайта. Экспорт слайдов в PDF/PPTX: `docs/presentations/README.md`.
 
 ## Публикация на GitHub Pages

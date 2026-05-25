@@ -44,6 +44,14 @@ marp docs/presentations/grant-presentation.md --pdf -o assets/presentations/gran
 
 Подробнее: [presentations/README.md](presentations/README.md).
 
+**Все ключевые документы в DOCX/PDF (выборочно, не весь сайт):**
+
+```powershell
+python -m chebarkul_grant export-docs
+```
+
+Инструкция: [export-guide.md](export-guide.md).
+
 ---
 
 ## Локальный просмотр

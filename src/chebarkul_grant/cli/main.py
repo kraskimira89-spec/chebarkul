@@ -23,5 +23,18 @@ def build_docs() -> None:
     subprocess.run([sys.executable, str(script)], check=True)
 
 
+@app.command("export-docs")
+def export_docs() -> None:
+    """Экспорт ключевых MD в DOCX/PDF (Pandoc + Marp) в папку exports/."""
+    import subprocess
+    import sys
+
+    root = Path(__file__).resolve().parents[3]
+    mkdocs_script = root / "scripts" / "build_mkdocs_grant_pages.py"
+    export_script = root / "scripts" / "export_documents.py"
+    subprocess.run([sys.executable, str(mkdocs_script)], check=True)
+    subprocess.run([sys.executable, str(export_script)], check=True)
+
+
 def main() -> None:
     app()

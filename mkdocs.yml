@@ -25,3 +25,4 @@ nav:
   - Презентация:
       - Слайды: presentations/grant-presentation.md
       - Экспорт PDF/PPTX: presentations/README.md
+  - Экспорт в Word/PDF: export-guide.md

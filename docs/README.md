@@ -49,9 +49,12 @@ marp docs/presentations/grant-presentation.md --pdf -o assets/presentations/gran
 ## Локальный просмотр
 
 ```powershell
+.\.venv\Scripts\Activate.ps1
 python -m chebarkul_grant build-docs
 mkdocs serve
 ```
+
+Если `mkdocs` не распознан — используйте `.\.venv\Scripts\mkdocs.exe serve` или `.\scripts\serve-docs.ps1`.
 
 Публичный сайт: **https://kraskimira89-spec.github.io/chebarkul/**
 

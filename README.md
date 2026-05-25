@@ -26,10 +26,25 @@ ruff check .
 
 ## Документация в браузере
 
+Сначала активируйте `.venv` (иначе `mkdocs` не найдётся в PATH):
+
 ```powershell
+.\.venv\Scripts\Activate.ps1
 python -m chebarkul_grant build-docs
-python -m chebarkul_grant version
 mkdocs serve
+```
+
+Без активации venv:
+
+```powershell
+.\.venv\Scripts\python.exe -m chebarkul_grant build-docs
+.\.venv\Scripts\mkdocs.exe serve
+```
+
+Или одной командой:
+
+```powershell
+.\scripts\serve-docs.ps1
 ```
 
 Откройте разделы **Договор (PDF)**, **Техническое задание**, **Структура проекта** и **Презентация** в меню сайта. Экспорт слайдов в PDF/PPTX: `docs/presentations/README.md`.

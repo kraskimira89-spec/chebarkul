@@ -1,6 +1,6 @@
 # Техническое задание
 
-[Скачать DOCX](/grant/TZ.docx)
+[Скачать DOCX](../TZ.docx)
 
 <div class="grant-docx" markdown="0">
 

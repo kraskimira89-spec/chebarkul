@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from urllib.parse import quote
 
 import mammoth
 
@@ -24,8 +23,8 @@ p[style-name='Heading 3'] => h3:fresh
 
 
 def _grant_href(filename: str) -> str:
-    """URL от корня сайта MkDocs (работает из любой вложенной страницы)."""
-    return f"/grant/{quote(filename)}"
+    """Относительная ссылка на файл в docs/grant/ (страницы в подпапках grant/*/)."""
+    return f"../{filename}"
 
 
 def build_dogovor_page() -> None:

@@ -14,6 +14,14 @@ PDF_NAME = "89-26-1-000205 Договор о предоставлении гра
 DOCX_TZ = "TZ.docx"
 DOCX_STRUCTURE = "Структура_проекта_грант_СВО_Чебаркуль.docx"
 
+# Стили Word, которые mammoth по умолчанию не распознаёт
+DOCX_STYLE_MAP = """
+p[style-name='Title'] => h1:fresh
+p[style-name='Heading 1'] => h1:fresh
+p[style-name='Heading 2'] => h2:fresh
+p[style-name='Heading 3'] => h3:fresh
+"""
+
 
 def _grant_href(filename: str) -> str:
     """URL от корня сайта MkDocs (работает из любой вложенной страницы)."""
@@ -35,16 +43,31 @@ def build_dogovor_page() -> None:
     (GRANT / "dogovor.md").write_text(content, encoding="utf-8")
 
 
+def _message_text(message: object) -> str:
+    return str(getattr(message, "message", message))
+
+
+def _important_messages(messages: list[object]) -> list[str]:
+    """Скрыть шумные предупреждения о неизвестных стилях абзацев Word."""
+    ignored_fragment = "Unrecognised paragraph style:"
+    return [text for msg in messages if ignored_fragment not in (text := _message_text(msg))]
+
+
+def _convert_docx_to_html(docx_path: Path) -> mammoth.results.Result:
+    with docx_path.open("rb") as docx_file:
+        return mammoth.convert_to_html(docx_file, style_map=DOCX_STYLE_MAP)
+
+
 def build_docx_page(*, docx_filename: str, output_md: str, title: str) -> None:
     docx_path = GRANT / docx_filename
     if not docx_path.is_file():
         raise FileNotFoundError(f"Не найден файл: {docx_path}")
 
-    with docx_path.open("rb") as docx_file:
-        result = mammoth.convert_to_html(docx_file)
+    result = _convert_docx_to_html(docx_path)
 
     docx_href = _grant_href(docx_filename)
-    warnings = "\n".join(f"- {msg}" for msg in result.messages)
+    notes = _important_messages(result.messages)
+    warnings = "\n".join(f"- {note}" for note in notes)
     warn_block = f'\n\n!!! warning "Замечания при конвертации"\n\n{warnings}\n' if warnings else ""
 
     content = f"""# {title}

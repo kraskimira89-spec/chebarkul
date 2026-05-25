@@ -1,0 +1,20 @@
+/* Просмотр ТЗ, сконвертированного из DOCX */
+.grant-docx {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.25rem;
+  background: var(--md-code-bg-color);
+  overflow-x: auto;
+}
+
+.grant-docx table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75rem 0;
+}
+
+.grant-docx th,
+.grant-docx td {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  padding: 0.35rem 0.5rem;
+}

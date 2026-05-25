@@ -35,6 +35,7 @@ docs = [
     "mkdocs>=1.6",
     "mkdocs-material>=9.5",
     "markdown>=3.6",
+    "mammoth>=1.8",
 ]
 ai = [
     "openai>=1.30",

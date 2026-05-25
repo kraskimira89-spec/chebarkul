@@ -1,5 +1,9 @@
 site_name: Chebarkul Grant Project
 site_description: "Документация и материалы грантового проекта"
+site_url: https://kraskimira89-spec.github.io/chebarkul/
+repo_url: https://github.com/kraskimira89-spec/chebarkul
+repo_name: kraskimira89-spec/chebarkul
+edit_uri: edit/main/docs/
 validation:
   links:
     unrecognized_links: ignore
@@ -17,4 +21,5 @@ nav:
       - Обзор: grant/README.md
       - Договор (PDF): grant/dogovor.md
       - Техническое задание: grant/tz.md
+      - Структура проекта: grant/struktura-proekta.md
   - Презентация: presentations/grant-presentation.md

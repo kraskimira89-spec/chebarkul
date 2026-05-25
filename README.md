@@ -32,4 +32,12 @@ python -m chebarkul_grant version
 mkdocs serve
 ```
 
-Откройте разделы **Договор (PDF)** и **Техническое задание** в меню сайта.
+Откройте разделы **Договор (PDF)**, **Техническое задание** и **Структура проекта** в меню сайта.
+
+## Публикация на GitHub Pages
+
+Документация публикуется автоматически при push в ветку `main` (workflow `.github/workflows/docs.yml`).
+
+**Один раз в настройках репозитория GitHub:** Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+
+Сайт: https://kraskimira89-spec.github.io/chebarkul/

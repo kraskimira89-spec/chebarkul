@@ -1,4 +1,4 @@
-"""Генерация страниц MkDocs для просмотра договора (PDF) и ТЗ (DOCX) в браузере."""
+"""Генерация страниц MkDocs для просмотра материалов гранта в браузере."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ GRANT = ROOT / "docs" / "grant"
 
 PDF_NAME = "89-26-1-000205 Договор о предоставлении гранта.pdf"
 DOCX_TZ = "TZ.docx"
+DOCX_STRUCTURE = "Структура_проекта_грант_СВО_Чебаркуль.docx"
 
 
 def _grant_href(filename: str) -> str:
@@ -34,19 +35,19 @@ def build_dogovor_page() -> None:
     (GRANT / "dogovor.md").write_text(content, encoding="utf-8")
 
 
-def build_tz_page() -> None:
-    docx_path = GRANT / DOCX_TZ
+def build_docx_page(*, docx_filename: str, output_md: str, title: str) -> None:
+    docx_path = GRANT / docx_filename
     if not docx_path.is_file():
         raise FileNotFoundError(f"Не найден файл: {docx_path}")
 
     with docx_path.open("rb") as docx_file:
         result = mammoth.convert_to_html(docx_file)
 
-    docx_href = _grant_href(DOCX_TZ)
+    docx_href = _grant_href(docx_filename)
     warnings = "\n".join(f"- {msg}" for msg in result.messages)
     warn_block = f'\n\n!!! warning "Замечания при конвертации"\n\n{warnings}\n' if warnings else ""
 
-    content = f"""# Техническое задание
+    content = f"""# {title}
 
 [Скачать DOCX]({docx_href})
 {warn_block}
@@ -56,7 +57,7 @@ def build_tz_page() -> None:
 
 </div>
 """
-    (GRANT / "tz.md").write_text(content, encoding="utf-8")
+    (GRANT / output_md).write_text(content, encoding="utf-8")
 
 
 def main() -> None:
@@ -65,8 +66,15 @@ def main() -> None:
         raise FileNotFoundError(f"Не найден файл: {pdf_path}")
 
     build_dogovor_page()
-    build_tz_page()
-    print("MkDocs pages: docs/grant/dogovor.md, docs/grant/tz.md")
+    build_docx_page(docx_filename=DOCX_TZ, output_md="tz.md", title="Техническое задание")
+    build_docx_page(
+        docx_filename=DOCX_STRUCTURE,
+        output_md="struktura-proekta.md",
+        title="Структура проекта",
+    )
+    print(
+        "MkDocs pages: docs/grant/dogovor.md, docs/grant/tz.md, " "docs/grant/struktura-proekta.md"
+    )
 
 
 if __name__ == "__main__":
